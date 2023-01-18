@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8_화면구현연습.html</title>
+    <style>
+        #root {
+            border: 2px solid black;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .item {
+            font-size: 19px;
+            border: 1px solid grey;
+            display: flex;
+        }
+        .item > div {
+            padding: 5px 10px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>8_화면구현연습.html</h1>
+    <hr>
+
+    <div id="root"></div>
+
+    <script>
+        // arr의 데이터를 7번 코드와 같은 방식으로 화면에 반영하세요
+        const root = document.getElementById('root')
+        const arr = [
+            { name: '이지은', kor: 100, eng: 99, mat: 87 },
+            { name: '홍진호', kor: 22,  eng: 22, mat: 22 },
+            { name: '유재석', kor: 95,  eng: 92, mat: 97 },
+            { name: '신동엽', kor: 100, eng: 84, mat: 92 },
+            { name: '강호동', kor: 85,  eng: 62, mat: 75 },
+        ]
+
+        arr.forEach(dto => {
+            const sum = dto.kor + dto.eng + dto.mat
+            const avg = (sum / 3).toPrecision(4)
+
+            const item = document.createElement('div')
+            item.className = 'item'
+
+            item.innerHTML += `<div class="name">${dto.name}</div>`
+            item.innerHTML += `<div class="kor">${dto.kor}</div>`
+            item.innerHTML += `<div class="eng">${dto.eng}</div>`
+            item.innerHTML += `<div class="mat">${dto.mat}</div>`
+            item.innerHTML += `<div class="sum">${sum}</div>`
+            item.innerHTML += `<div class="avg">${avg}</div>`
+
+            root.appendChild(item)
+        })
+    </script>
+    
+</body>
+</html>
